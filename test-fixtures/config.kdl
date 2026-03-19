@@ -1,0 +1,63 @@
+// Zellij Configuration
+simplified_ui true
+default_shell "/bin/zsh"
+default_layout "compact"
+default_mode "normal"
+mouse_mode true
+scroll_buffer_size 10000
+copy_clipboard "system"
+copy_on_select true
+pane_frames true
+session_serialization true
+theme "dracula"
+on_force_close "detach"
+
+keybinds {
+    normal {
+        bind "Ctrl a" { SwitchToMode "tmux"; }
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt l" { MoveFocus "Right"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+    }
+    tmux {
+        bind "Ctrl a" { SwitchToMode "normal"; }
+        bind "h" { NewPane "Left"; SwitchToMode "normal"; }
+        bind "v" { NewPane "Down"; SwitchToMode "normal"; }
+        bind "c" { NewTab; SwitchToMode "normal"; }
+        bind "x" { CloseFocus; SwitchToMode "normal"; }
+    }
+    shared {
+        bind "Alt n" { GoToNextTab; }
+        bind "Alt p" { GoToPreviousTab; }
+    }
+}
+
+themes {
+    dracula {
+        fg "#f8f8f2"
+        bg "#282a36"
+        black "#000000"
+        red "#ff5555"
+        green "#50fa7b"
+        yellow "#f1fa8c"
+        blue "#bd93f9"
+        magenta "#ff79c6"
+        cyan "#8be9fd"
+        white "#bbbbbb"
+        orange "#ffb86c"
+    }
+}
+
+plugins {
+    tab-bar location="zellij:tab-bar"
+    status-bar location="zellij:status-bar"
+    strider location="zellij:strider"
+}
+
+ui {
+    pane_frames {
+        rounded_corners true
+        hide_session_name true
+    }
+}

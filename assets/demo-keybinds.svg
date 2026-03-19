@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <style>
+      @keyframes fadeInDropdown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+      .mono { font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace; }
+      .ui { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Window frame -->
+  <rect width="800" height="400" rx="8" fill="#1e1e1e"/>
+  <rect width="800" height="36" rx="8" fill="#323233"/>
+  <rect y="28" width="800" height="8" fill="#323233"/>
+
+  <!-- Window controls -->
+  <circle cx="20" cy="18" r="6" fill="#ff5f56"/>
+  <circle cx="40" cy="18" r="6" fill="#ffbd2e"/>
+  <circle cx="60" cy="18" r="6" fill="#27c93f"/>
+
+  <text x="400" y="22" text-anchor="middle" class="ui" font-size="12" fill="#999">config.kdl - Zellij Config</text>
+
+  <!-- Tab bar -->
+  <rect y="36" width="800" height="28" fill="#252526"/>
+  <rect x="0" y="36" width="140" height="28" fill="#1e1e1e"/>
+  <text x="14" y="54" class="ui" font-size="11" fill="#cccccc">config.kdl</text>
+  <rect x="0" y="62" width="140" height="2" fill="#ab47bc"/>
+
+  <!-- Line numbers gutter -->
+  <rect x="0" y="64" width="44" height="336" fill="#1e1e1e"/>
+
+  <!-- Editor content -->
+  <text x="30" y="88" class="mono" font-size="13" fill="#5c6370" text-anchor="end">1</text>
+  <text x="52" y="88" class="mono" font-size="13" fill="#61afef">keybinds</text>
+  <text x="118" y="88" class="mono" font-size="13" fill="#abb2bf"> {</text>
+
+  <text x="30" y="110" class="mono" font-size="13" fill="#5c6370" text-anchor="end">2</text>
+  <text x="72" y="110" class="mono" font-size="13" fill="#61afef">normal</text>
+  <text x="124" y="110" class="mono" font-size="13" fill="#abb2bf"> {</text>
+
+  <text x="30" y="132" class="mono" font-size="13" fill="#5c6370" text-anchor="end">3</text>
+  <text x="92" y="132" class="mono" font-size="13" fill="#c678dd">bind</text>
+  <text x="126" y="132" class="mono" font-size="13" fill="#98c379"> "Ctrl a"</text>
+  <text x="206" y="132" class="mono" font-size="13" fill="#abb2bf"> {</text>
+
+  <text x="30" y="154" class="mono" font-size="13" fill="#5c6370" text-anchor="end">4</text>
+  <text x="112" y="154" class="mono" font-size="13" fill="#abb2bf"></text>
+  <!-- Cursor -->
+  <rect x="112" y="142" width="2" height="16" fill="#aeafad" style="animation: cursorBlink 1.2s step-end infinite;"/>
+
+  <text x="30" y="176" class="mono" font-size="13" fill="#5c6370" text-anchor="end">5</text>
+  <text x="92" y="176" class="mono" font-size="13" fill="#abb2bf">}</text>
+
+  <text x="30" y="198" class="mono" font-size="13" fill="#5c6370" text-anchor="end">6</text>
+  <text x="72" y="198" class="mono" font-size="13" fill="#abb2bf">}</text>
+
+  <text x="30" y="220" class="mono" font-size="13" fill="#5c6370" text-anchor="end">7</text>
+  <text x="52" y="220" class="mono" font-size="13" fill="#abb2bf">}</text>
+
+  <!-- Autocomplete dropdown for actions -->
+  <g style="animation: fadeInDropdown 0.5s ease-out 0.6s both;">
+    <rect x="108" y="158" width="360" height="218" rx="4" fill="#252526" stroke="#454545" stroke-width="1"/>
+
+    <!-- Selected row -->
+    <rect x="109" y="159" width="358" height="24" fill="#094771"/>
+
+    <!-- Action items -->
+    <text x="122" y="176" class="mono" font-size="12" fill="#e0e0e0">SwitchToMode</text>
+    <text x="310" y="176" class="mono" font-size="11" fill="#d19a66">mode_name</text>
+    <rect x="116" y="166" width="3" height="12" rx="1" fill="#e5a132"/>
+
+    <text x="122" y="200" class="mono" font-size="12" fill="#bbbbbb">NewPane</text>
+    <text x="310" y="200" class="mono" font-size="11" fill="#888">direction?</text>
+    <rect x="116" y="190" width="3" height="12" rx="1" fill="#e5a132"/>
+
+    <text x="122" y="224" class="mono" font-size="12" fill="#bbbbbb">NewTab</text>
+    <text x="310" y="224" class="mono" font-size="11" fill="#888">layout?</text>
+    <rect x="116" y="214" width="3" height="12" rx="1" fill="#e5a132"/>
+
+    <text x="122" y="248" class="mono" font-size="12" fill="#bbbbbb">MoveFocus</text>
+    <text x="310" y="248" class="mono" font-size="11" fill="#d19a66">direction</text>
+    <rect x="116" y="238" width="3" height="12" rx="1" fill="#e5a132"/>
+
+    <text x="122" y="272" class="mono" font-size="12" fill="#bbbbbb">CloseFocus</text>
+    <rect x="116" y="262" width="3" height="12" rx="1" fill="#e5a132"/>
+
+    <text x="122" y="296" class="mono" font-size="12" fill="#bbbbbb">Resize</text>
+    <text x="310" y="296" class="mono" font-size="11" fill="#d19a66">direction</text>
+    <rect x="116" y="286" width="3" height="12" rx="1" fill="#e5a132"/>
+
+    <text x="122" y="320" class="mono" font-size="12" fill="#bbbbbb">ToggleFloatingPanes</text>
+    <rect x="116" y="310" width="3" height="12" rx="1" fill="#e5a132"/>
+
+    <text x="122" y="344" class="mono" font-size="12" fill="#bbbbbb">Quit</text>
+    <rect x="116" y="334" width="3" height="12" rx="1" fill="#e5a132"/>
+
+    <text x="122" y="368" class="mono" font-size="12" fill="#bbbbbb">Detach</text>
+    <rect x="116" y="358" width="3" height="12" rx="1" fill="#e5a132"/>
+  </g>
+
+  <!-- Detail panel -->
+  <g style="animation: fadeInDropdown 0.5s ease-out 1s both;">
+    <rect x="472" y="158" width="280" height="80" rx="4" fill="#252526" stroke="#454545" stroke-width="1"/>
+    <text x="486" y="178" class="ui" font-size="12" fill="#cccccc" font-weight="600">SwitchToMode</text>
+    <text x="486" y="196" class="ui" font-size="11" fill="#999">Switch to specified input mode.</text>
+    <text x="486" y="214" class="mono" font-size="11" fill="#888">Param:</text>
+    <text x="534" y="214" class="mono" font-size="11" fill="#d19a66">normal</text>
+    <text x="574" y="214" class="mono" font-size="11" fill="#888"> | </text>
+    <text x="588" y="214" class="mono" font-size="11" fill="#d19a66">locked</text>
+    <text x="630" y="214" class="mono" font-size="11" fill="#888"> | </text>
+    <text x="644" y="214" class="mono" font-size="11" fill="#d19a66">resize</text>
+    <text x="686" y="214" class="mono" font-size="11" fill="#888"> | ...</text>
+    <text x="486" y="232" class="ui" font-size="11" fill="#61afef">zellij.dev/documentation</text>
+  </g>
+</svg>

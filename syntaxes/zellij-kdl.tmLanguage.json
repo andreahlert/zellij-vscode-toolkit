@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Zellij KDL Config",
+  "scopeName": "source.zellij-kdl",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#raw-strings" },
+    { "include": "#numbers" },
+    { "include": "#booleans" },
+    { "include": "#null" },
+    { "include": "#actions" },
+    { "include": "#top-level-blocks" },
+    { "include": "#config-keys" },
+    { "include": "#mode-names" },
+    { "include": "#layout-nodes" },
+    { "include": "#attributes" },
+    { "include": "#braces" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.zellij-kdl",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.zellij-kdl",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.zellij-kdl",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.zellij-kdl",
+          "match": "\\\\(?:[\"\\\\nrtbf/]|u\\{[0-9a-fA-F]{1,6}\\})"
+        },
+        {
+          "name": "constant.other.color.hex.zellij-kdl",
+          "match": "#[0-9a-fA-F]{6}\\b"
+        }
+      ]
+    },
+    "raw-strings": {
+      "name": "string.quoted.raw.zellij-kdl",
+      "begin": "r\"",
+      "end": "\""
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.zellij-kdl",
+          "match": "\\b0x[0-9a-fA-F_]+\\b"
+        },
+        {
+          "name": "constant.numeric.octal.zellij-kdl",
+          "match": "\\b0o[0-7_]+\\b"
+        },
+        {
+          "name": "constant.numeric.binary.zellij-kdl",
+          "match": "\\b0b[01_]+\\b"
+        },
+        {
+          "name": "constant.numeric.float.zellij-kdl",
+          "match": "\\b[0-9][0-9_]*\\.[0-9][0-9_]*(?:[eE][+-]?[0-9_]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.zellij-kdl",
+          "match": "\\b[0-9][0-9_]*\\b"
+        },
+        {
+          "name": "constant.numeric.percentage.zellij-kdl",
+          "match": "\\b[0-9]+%"
+        }
+      ]
+    },
+    "booleans": {
+      "name": "constant.language.boolean.zellij-kdl",
+      "match": "\\b(true|false)\\b"
+    },
+    "null": {
+      "name": "constant.language.null.zellij-kdl",
+      "match": "\\bnull\\b"
+    },
+    "top-level-blocks": {
+      "name": "entity.name.tag.block.zellij-kdl",
+      "match": "^\\s*(keybinds|themes|plugins|load_plugins|ui|layout|env)\\b"
+    },
+    "config-keys": {
+      "name": "variable.other.config-key.zellij-kdl",
+      "match": "^\\s*(simplified_ui|default_shell|default_cwd|default_layout|default_mode|mouse_mode|scroll_buffer_size|copy_command|copy_clipboard|copy_on_select|scrollback_editor|mirror_session|on_force_close|pane_frames|auto_layout|session_serialization|serialize_pane_viewport|scrollback_lines_to_serialize|theme|styled_underlines|serialization_interval|disable_session_metadata|support_kitty_keyboard_protocol|stacked_pane_resize_algorithm|stacked_resize_up_start_count|stacked_resize_down_start_count|rounded_corners|hide_session_name)\\b"
+    },
+    "mode-names": {
+      "name": "support.type.mode.zellij-kdl",
+      "match": "\\b(normal|locked|resize|pane|tab|scroll|enter_search|search|rename_tab|rename_pane|session|move|prompt|tmux|shared|shared_except|shared_among)\\b"
+    },
+    "actions": {
+      "name": "support.function.action.zellij-kdl",
+      "match": "\\b(Quit|Detach|SwitchToMode|NewPane|NewTab|GoToNextTab|GoToPreviousTab|MoveFocus|MovePane|Resize|FocusNextPane|FocusPreviousPane|ToggleFloatingPanes|TogglePaneEmbedOrFloating|ToggleFocusFullscreen|ToggleActiveSyncTab|ScrollUp|ScrollDown|ScrollToBottom|ScrollToTop|PageScrollUp|PageScrollDown|HalfPageScrollUp|HalfPageScrollDown|Search|SearchToggleOption|EditScrollback|CloseFocus|CloseTab|UndoRenameTab|UndoRenamePane|Write|WriteChars|DumpScreen|DumpLayout|Run|MessagePlugin|LaunchOrFocusPlugin|GoToTab|GoToTabName|PreviousSwapLayout|NextSwapLayout|MoveTab|Clear|NewFloatingPane|NewTiledPane|ToggleTab|BreakPane|BreakPaneRight|BreakPaneLeft|RenameTab|RenamePane|ListClients)\\b"
+    },
+    "layout-nodes": {
+      "name": "entity.name.tag.layout.zellij-kdl",
+      "match": "\\b(pane|tab|pane_template|tab_template|default_tab_template|swap_tiled_layout|swap_floating_layout|plugin|children|floating_panes|command|cwd|args)\\b"
+    },
+    "attributes": {
+      "patterns": [
+        {
+          "name": "entity.other.attribute-name.zellij-kdl",
+          "match": "\\b(split_direction|size|borderless|focus|name|location|cwd|command|args|close_on_exit|start_suspended|floating|stacked|hide_floating_panes)(?==)"
+        }
+      ]
+    },
+    "braces": {
+      "patterns": [
+        {
+          "name": "punctuation.section.block.begin.zellij-kdl",
+          "match": "\\{"
+        },
+        {
+          "name": "punctuation.section.block.end.zellij-kdl",
+          "match": "\\}"
+        }
+      ]
+    },
+    "identifiers": {
+      "name": "entity.name.other.zellij-kdl",
+      "match": "\\b(bind|clear-defaults|unbind)\\b"
+    }
+  }
+}

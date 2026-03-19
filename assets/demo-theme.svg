@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <style>
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes popIn { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+      .mono { font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace; }
+      .ui { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Window frame -->
+  <rect width="800" height="400" rx="8" fill="#1e1e1e"/>
+  <rect width="800" height="36" rx="8" fill="#323233"/>
+  <rect y="28" width="800" height="8" fill="#323233"/>
+
+  <!-- Window controls -->
+  <circle cx="20" cy="18" r="6" fill="#ff5f56"/>
+  <circle cx="40" cy="18" r="6" fill="#ffbd2e"/>
+  <circle cx="60" cy="18" r="6" fill="#27c93f"/>
+
+  <text x="400" y="22" text-anchor="middle" class="ui" font-size="12" fill="#999">config.kdl - Zellij Config</text>
+
+  <!-- Tab bar -->
+  <rect y="36" width="800" height="28" fill="#252526"/>
+  <rect x="0" y="36" width="140" height="28" fill="#1e1e1e"/>
+  <text x="14" y="54" class="ui" font-size="11" fill="#cccccc">config.kdl</text>
+  <rect x="0" y="62" width="140" height="2" fill="#ab47bc"/>
+
+  <!-- Line numbers gutter -->
+  <rect x="0" y="64" width="44" height="336" fill="#1e1e1e"/>
+
+  <!-- Editor content with color decorators -->
+
+  <!-- Line 1 -->
+  <text x="30" y="92" class="mono" font-size="13" fill="#5c6370" text-anchor="end">1</text>
+  <text x="52" y="92" class="mono" font-size="13" fill="#61afef">themes</text>
+  <text x="104" y="92" class="mono" font-size="13" fill="#abb2bf"> {</text>
+
+  <!-- Line 2 -->
+  <text x="30" y="118" class="mono" font-size="13" fill="#5c6370" text-anchor="end">2</text>
+  <text x="72" y="118" class="mono" font-size="13" fill="#61afef">dracula</text>
+  <text x="128" y="118" class="mono" font-size="13" fill="#abb2bf"> {</text>
+
+  <!-- Line 3: fg -->
+  <text x="30" y="148" class="mono" font-size="13" fill="#5c6370" text-anchor="end">3</text>
+  <text x="92" y="148" class="mono" font-size="13" fill="#61afef">fg</text>
+  <text x="126" y="148" class="mono" font-size="13" fill="#98c379">"#f8f8f2"</text>
+  <!-- Color decorator -->
+  <g style="animation: popIn 0.3s ease-out 0.4s both;">
+    <rect x="114" y="137" width="11" height="11" rx="2" fill="#f8f8f2" stroke="#666" stroke-width="0.5"/>
+  </g>
+
+  <!-- Line 4: bg -->
+  <text x="30" y="174" class="mono" font-size="13" fill="#5c6370" text-anchor="end">4</text>
+  <text x="92" y="174" class="mono" font-size="13" fill="#61afef">bg</text>
+  <text x="126" y="174" class="mono" font-size="13" fill="#98c379">"#282a36"</text>
+  <g style="animation: popIn 0.3s ease-out 0.55s both;">
+    <rect x="114" y="163" width="11" height="11" rx="2" fill="#282a36" stroke="#666" stroke-width="0.5"/>
+  </g>
+
+  <!-- Line 5: red -->
+  <text x="30" y="200" class="mono" font-size="13" fill="#5c6370" text-anchor="end">5</text>
+  <text x="92" y="200" class="mono" font-size="13" fill="#61afef">red</text>
+  <text x="126" y="200" class="mono" font-size="13" fill="#98c379">"#ff5555"</text>
+  <g style="animation: popIn 0.3s ease-out 0.7s both;">
+    <rect x="114" y="189" width="11" height="11" rx="2" fill="#ff5555" stroke="#666" stroke-width="0.5"/>
+  </g>
+
+  <!-- Line 6: green -->
+  <text x="30" y="226" class="mono" font-size="13" fill="#5c6370" text-anchor="end">6</text>
+  <text x="92" y="226" class="mono" font-size="13" fill="#61afef">green</text>
+  <text x="142" y="226" class="mono" font-size="13" fill="#98c379">"#50fa7b"</text>
+  <g style="animation: popIn 0.3s ease-out 0.85s both;">
+    <rect x="130" y="215" width="11" height="11" rx="2" fill="#50fa7b" stroke="#666" stroke-width="0.5"/>
+  </g>
+
+  <!-- Line 7: yellow -->
+  <text x="30" y="252" class="mono" font-size="13" fill="#5c6370" text-anchor="end">7</text>
+  <text x="92" y="252" class="mono" font-size="13" fill="#61afef">yellow</text>
+  <text x="150" y="252" class="mono" font-size="13" fill="#98c379">"#f1fa8c"</text>
+  <g style="animation: popIn 0.3s ease-out 1s both;">
+    <rect x="138" y="241" width="11" height="11" rx="2" fill="#f1fa8c" stroke="#666" stroke-width="0.5"/>
+  </g>
+
+  <!-- Line 8: blue -->
+  <text x="30" y="278" class="mono" font-size="13" fill="#5c6370" text-anchor="end">8</text>
+  <text x="92" y="278" class="mono" font-size="13" fill="#61afef">blue</text>
+  <text x="126" y="278" class="mono" font-size="13" fill="#98c379">"#bd93f9"</text>
+  <g style="animation: popIn 0.3s ease-out 1.15s both;">
+    <rect x="114" y="267" width="11" height="11" rx="2" fill="#bd93f9" stroke="#666" stroke-width="0.5"/>
+  </g>
+
+  <!-- Line 9: magenta -->
+  <text x="30" y="304" class="mono" font-size="13" fill="#5c6370" text-anchor="end">9</text>
+  <text x="92" y="304" class="mono" font-size="13" fill="#61afef">magenta</text>
+  <text x="160" y="304" class="mono" font-size="13" fill="#98c379">"#ff79c6"</text>
+  <g style="animation: popIn 0.3s ease-out 1.3s both;">
+    <rect x="148" y="293" width="11" height="11" rx="2" fill="#ff79c6" stroke="#666" stroke-width="0.5"/>
+  </g>
+
+  <!-- Line 10: cyan -->
+  <text x="30" y="330" class="mono" font-size="13" fill="#5c6370" text-anchor="end">10</text>
+  <text x="92" y="330" class="mono" font-size="13" fill="#61afef">cyan</text>
+  <text x="126" y="330" class="mono" font-size="13" fill="#98c379">"#8be9fd"</text>
+  <g style="animation: popIn 0.3s ease-out 1.45s both;">
+    <rect x="114" y="319" width="11" height="11" rx="2" fill="#8be9fd" stroke="#666" stroke-width="0.5"/>
+  </g>
+
+  <!-- Line 11: closing braces -->
+  <text x="30" y="356" class="mono" font-size="13" fill="#5c6370" text-anchor="end">11</text>
+  <text x="72" y="356" class="mono" font-size="13" fill="#abb2bf">}</text>
+
+  <text x="30" y="378" class="mono" font-size="13" fill="#5c6370" text-anchor="end">12</text>
+  <text x="52" y="378" class="mono" font-size="13" fill="#abb2bf">}</text>
+
+  <!-- Minimap-like decoration on the right -->
+  <rect x="750" y="64" width="40" height="336" fill="#1e1e1e" opacity="0.5"/>
+  <rect x="758" y="136" width="4" height="3" rx="1" fill="#f8f8f2" opacity="0.4"/>
+  <rect x="758" y="162" width="4" height="3" rx="1" fill="#282a36" opacity="0.4"/>
+  <rect x="758" y="188" width="4" height="3" rx="1" fill="#ff5555" opacity="0.4"/>
+  <rect x="758" y="214" width="4" height="3" rx="1" fill="#50fa7b" opacity="0.4"/>
+  <rect x="758" y="240" width="4" height="3" rx="1" fill="#f1fa8c" opacity="0.4"/>
+  <rect x="758" y="266" width="4" height="3" rx="1" fill="#bd93f9" opacity="0.4"/>
+  <rect x="758" y="292" width="4" height="3" rx="1" fill="#ff79c6" opacity="0.4"/>
+  <rect x="758" y="318" width="4" height="3" rx="1" fill="#8be9fd" opacity="0.4"/>
+</svg>

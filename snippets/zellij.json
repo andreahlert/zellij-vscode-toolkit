@@ -1,0 +1,190 @@
+{
+  "Zellij Full Config": {
+    "prefix": "zellij-config",
+    "description": "Complete Zellij configuration template with common options",
+    "body": [
+      "// Zellij Configuration",
+      "// See https://zellij.dev/documentation/options",
+      "",
+      "default_shell \"${1:bash}\"",
+      "default_layout \"${2:default}\"",
+      "default_mode \"${3|normal,locked|}\"",
+      "theme \"${4:default}\"",
+      "",
+      "simplified_ui ${5|false,true|}",
+      "pane_frames ${6|true,false|}",
+      "mouse_mode ${7|true,false|}",
+      "copy_on_select ${8|true,false|}",
+      "scroll_buffer_size ${9:10000}",
+      "on_force_close \"${10|detach,quit|}\"",
+      "session_serialization ${11|true,false|}",
+      "",
+      "ui {",
+      "    pane_frames {",
+      "        rounded_corners ${12|true,false|}",
+      "        hide_session_name ${13|false,true|}",
+      "    }",
+      "}",
+      "",
+      "keybinds {",
+      "    $0",
+      "}"
+    ]
+  },
+  "Zellij Keybinding Block": {
+    "prefix": "zellij-keybind",
+    "description": "Keybinding mode block with bind statements",
+    "body": [
+      "keybinds {",
+      "    ${1|normal,locked,resize,pane,tab,scroll,search,session,move,tmux|} {",
+      "        bind \"${2:Ctrl a}\" { ${3:SwitchToMode \"normal\"}; }",
+      "        $0",
+      "    }",
+      "}"
+    ]
+  },
+  "Zellij Theme": {
+    "prefix": "zellij-theme",
+    "description": "Complete theme definition with all color slots",
+    "body": [
+      "themes {",
+      "    ${1:mytheme} {",
+      "        fg \"${2:#d4d4d4}\"",
+      "        bg \"${3:#1e1e1e}\"",
+      "        black \"${4:#000000}\"",
+      "        red \"${5:#f44747}\"",
+      "        green \"${6:#6a9955}\"",
+      "        yellow \"${7:#dcdcaa}\"",
+      "        blue \"${8:#569cd6}\"",
+      "        magenta \"${9:#c586c0}\"",
+      "        cyan \"${10:#4ec9b0}\"",
+      "        white \"${11:#d4d4d4}\"",
+      "        orange \"${12:#ce9178}\"",
+      "    }",
+      "}"
+    ]
+  },
+  "Zellij Basic Layout": {
+    "prefix": "zellij-layout",
+    "description": "Basic Zellij layout with status bars",
+    "body": [
+      "layout {",
+      "    pane size=1 borderless=true {",
+      "        plugin location=\"zellij:tab-bar\"",
+      "    }",
+      "    pane {",
+      "        $0",
+      "    }",
+      "    pane size=2 borderless=true {",
+      "        plugin location=\"zellij:status-bar\"",
+      "    }",
+      "}"
+    ]
+  },
+  "Zellij Split Layout": {
+    "prefix": "zellij-layout-split",
+    "description": "Layout with vertical and horizontal splits",
+    "body": [
+      "layout {",
+      "    pane size=1 borderless=true {",
+      "        plugin location=\"zellij:tab-bar\"",
+      "    }",
+      "    pane split_direction=\"vertical\" {",
+      "        pane name=\"${1:editor}\" focus=true",
+      "        pane split_direction=\"horizontal\" {",
+      "            pane name=\"${2:terminal}\"",
+      "            pane name=\"${3:logs}\"",
+      "        }",
+      "    }",
+      "    pane size=2 borderless=true {",
+      "        plugin location=\"zellij:status-bar\"",
+      "    }",
+      "}"
+    ]
+  },
+  "Zellij Multi-Tab Layout": {
+    "prefix": "zellij-layout-tabs",
+    "description": "Layout with multiple named tabs",
+    "body": [
+      "layout {",
+      "    default_tab_template {",
+      "        pane size=1 borderless=true {",
+      "            plugin location=\"zellij:tab-bar\"",
+      "        }",
+      "        children",
+      "        pane size=2 borderless=true {",
+      "            plugin location=\"zellij:status-bar\"",
+      "        }",
+      "    }",
+      "",
+      "    tab name=\"${1:main}\" focus=true {",
+      "        pane",
+      "    }",
+      "",
+      "    tab name=\"${2:build}\" {",
+      "        pane split_direction=\"vertical\" {",
+      "            pane name=\"${3:editor}\"",
+      "            pane name=\"${4:terminal}\"",
+      "        }",
+      "    }",
+      "",
+      "    tab name=\"${5:logs}\" {",
+      "        pane",
+      "    }",
+      "}"
+    ]
+  },
+  "Zellij Plugin": {
+    "prefix": "zellij-plugin",
+    "description": "Plugin configuration block",
+    "body": [
+      "plugins {",
+      "    ${1:my-plugin} location=\"${2|zellij:tab-bar,zellij:status-bar,zellij:strider,zellij:compact-bar,zellij:session-manager,zellij:welcome-screen,zellij:filepicker|}\" {",
+      "        $0",
+      "    }",
+      "}"
+    ]
+  },
+  "Bind Statement": {
+    "prefix": "bind",
+    "description": "Keybinding statement",
+    "body": [
+      "bind \"${1:Ctrl a}\" { ${2:SwitchToMode \"normal\"}; }"
+    ]
+  },
+  "Pane with Command": {
+    "prefix": "pane-command",
+    "description": "Pane running a specific command",
+    "body": [
+      "pane command=\"${1:command}\" name=\"${2:name}\" {",
+      "    args \"${3:arg1}\" \"${4:arg2}\"",
+      "    cwd \"${5:/path}\"",
+      "}"
+    ]
+  },
+  "Swap Tiled Layout": {
+    "prefix": "zellij-swap-tiled",
+    "description": "Swap tiled layout definition",
+    "body": [
+      "swap_tiled_layout name=\"${1:stacked}\" {",
+      "    tab {",
+      "        pane stacked=true {",
+      "            pane",
+      "            pane",
+      "        }",
+      "    }",
+      "}"
+    ]
+  },
+  "Shared Keybindings": {
+    "prefix": "zellij-shared-binds",
+    "description": "Shared keybindings block",
+    "body": [
+      "shared_except \"${1:locked}\" {",
+      "    bind \"${2:Alt n}\" { NewPane; }",
+      "    bind \"${3:Alt t}\" { NewTab; }",
+      "    $0",
+      "}"
+    ]
+  }
+}

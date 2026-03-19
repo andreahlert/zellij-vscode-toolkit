@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <style>
+      @keyframes fadeInTooltip { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes underlineAppear { from { width: 0; } to { width: 106px; } }
+      .mono { font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace; }
+      .ui { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Window frame -->
+  <rect width="800" height="400" rx="8" fill="#1e1e1e"/>
+  <rect width="800" height="36" rx="8" fill="#323233"/>
+  <rect y="28" width="800" height="8" fill="#323233"/>
+
+  <!-- Window controls -->
+  <circle cx="20" cy="18" r="6" fill="#ff5f56"/>
+  <circle cx="40" cy="18" r="6" fill="#ffbd2e"/>
+  <circle cx="60" cy="18" r="6" fill="#27c93f"/>
+
+  <text x="400" y="22" text-anchor="middle" class="ui" font-size="12" fill="#999">config.kdl - Zellij Config</text>
+
+  <!-- Tab bar -->
+  <rect y="36" width="800" height="28" fill="#252526"/>
+  <rect x="0" y="36" width="140" height="28" fill="#1e1e1e"/>
+  <text x="14" y="54" class="ui" font-size="11" fill="#cccccc">config.kdl</text>
+  <rect x="0" y="62" width="140" height="2" fill="#ab47bc"/>
+
+  <!-- Line numbers gutter -->
+  <rect x="0" y="64" width="44" height="336" fill="#1e1e1e"/>
+
+  <!-- Editor content -->
+  <text x="30" y="88" class="mono" font-size="13" fill="#5c6370" text-anchor="end">1</text>
+  <text x="52" y="88" class="mono" font-size="13" fill="#5c6370">// Zellij configuration</text>
+
+  <text x="30" y="110" class="mono" font-size="13" fill="#5c6370" text-anchor="end">2</text>
+  <text x="52" y="110" class="mono" font-size="13" fill="#c678dd">simplified_ui</text>
+  <text x="164" y="110" class="mono" font-size="13" fill="#d19a66"> true</text>
+
+  <text x="30" y="132" class="mono" font-size="13" fill="#5c6370" text-anchor="end">3</text>
+  <text x="52" y="132" class="mono" font-size="13" fill="#c678dd">pane_frames</text>
+  <text x="156" y="132" class="mono" font-size="13" fill="#d19a66"> true</text>
+
+  <text x="30" y="154" class="mono" font-size="13" fill="#5c6370" text-anchor="end">4</text>
+  <!-- Hovered word with underline -->
+  <text x="52" y="154" class="mono" font-size="13" fill="#c678dd">default_mode</text>
+  <rect x="52" y="157" width="106" height="1" fill="#c678dd" opacity="0.6" style="animation: underlineAppear 0.3s ease-out;"/>
+  <text x="160" y="154" class="mono" font-size="13" fill="#98c379"> "normal"</text>
+
+  <text x="30" y="176" class="mono" font-size="13" fill="#5c6370" text-anchor="end">5</text>
+  <text x="52" y="176" class="mono" font-size="13" fill="#c678dd">theme</text>
+  <text x="100" y="176" class="mono" font-size="13" fill="#98c379"> "dracula"</text>
+
+  <text x="30" y="198" class="mono" font-size="13" fill="#5c6370" text-anchor="end">6</text>
+  <text x="52" y="198" class="mono" font-size="13" fill="#c678dd">mouse_mode</text>
+  <text x="144" y="198" class="mono" font-size="13" fill="#d19a66"> true</text>
+
+  <text x="30" y="220" class="mono" font-size="13" fill="#5c6370" text-anchor="end">7</text>
+  <text x="52" y="220" class="mono" font-size="13" fill="#c678dd">scroll_buffer_size</text>
+  <text x="202" y="220" class="mono" font-size="13" fill="#d19a66"> 10000</text>
+
+  <!-- Hover tooltip -->
+  <g style="animation: fadeInTooltip 0.4s ease-out 0.5s both;">
+    <rect x="48" y="165" width="420" height="185" rx="4" fill="#252526" stroke="#454545" stroke-width="1"/>
+
+    <!-- Header -->
+    <text x="62" y="186" class="mono" font-size="12" fill="#61afef">default_mode</text>
+    <text x="166" y="186" class="mono" font-size="12" fill="#888">: enum</text>
+
+    <!-- Separator line -->
+    <line x1="62" y1="194" x2="454" y2="194" stroke="#454545" stroke-width="1"/>
+
+    <!-- Description -->
+    <text x="62" y="212" class="ui" font-size="12" fill="#cccccc">The default mode Zellij starts in.</text>
+    <text x="62" y="228" class="ui" font-size="12" fill="#cccccc">Controls which key bindings are active on startup.</text>
+
+    <!-- Valid values -->
+    <text x="62" y="250" class="ui" font-size="11" fill="#888" font-weight="600">Valid values:</text>
+    <text x="62" y="268" class="mono" font-size="11" fill="#d19a66">normal</text>
+    <text x="110" y="268" class="mono" font-size="11" fill="#888">|</text>
+    <text x="122" y="268" class="mono" font-size="11" fill="#d19a66">locked</text>
+    <text x="168" y="268" class="mono" font-size="11" fill="#888">|</text>
+    <text x="180" y="268" class="mono" font-size="11" fill="#d19a66">resize</text>
+    <text x="224" y="268" class="mono" font-size="11" fill="#888">|</text>
+    <text x="236" y="268" class="mono" font-size="11" fill="#d19a66">pane</text>
+    <text x="268" y="268" class="mono" font-size="11" fill="#888">|</text>
+    <text x="280" y="268" class="mono" font-size="11" fill="#d19a66">tab</text>
+    <text x="306" y="268" class="mono" font-size="11" fill="#888">|</text>
+    <text x="318" y="268" class="mono" font-size="11" fill="#d19a66">scroll</text>
+    <text x="364" y="268" class="mono" font-size="11" fill="#888">|</text>
+    <text x="376" y="268" class="mono" font-size="11" fill="#d19a66">search</text>
+    <text x="62" y="286" class="mono" font-size="11" fill="#d19a66">session</text>
+    <text x="116" y="286" class="mono" font-size="11" fill="#888">|</text>
+    <text x="128" y="286" class="mono" font-size="11" fill="#d19a66">move</text>
+    <text x="160" y="286" class="mono" font-size="11" fill="#888">|</text>
+    <text x="172" y="286" class="mono" font-size="11" fill="#d19a66">tmux</text>
+
+    <!-- Example -->
+    <text x="62" y="308" class="ui" font-size="11" fill="#888" font-weight="600">Example:</text>
+    <text x="120" y="308" class="mono" font-size="11" fill="#c678dd">default_mode</text>
+    <text x="218" y="308" class="mono" font-size="11" fill="#98c379">"locked"</text>
+
+    <!-- Default -->
+    <text x="62" y="328" class="ui" font-size="11" fill="#888" font-weight="600">Default:</text>
+    <text x="116" y="328" class="mono" font-size="11" fill="#98c379">"normal"</text>
+
+    <!-- Docs link -->
+    <text x="62" y="344" class="ui" font-size="11" fill="#61afef">zellij.dev/documentation/configuration</text>
+  </g>
+</svg>

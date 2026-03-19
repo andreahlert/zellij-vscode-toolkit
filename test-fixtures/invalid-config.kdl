@@ -1,0 +1,20 @@
+// Zellij config with errors
+simplified_ui "yes"
+unknown_option true
+default_mode "supermode"
+scroll_buffer_size abc
+on_force_close "restart"
+
+keybinds {
+    supermode {
+        bind "Ctrl a" { UnknownAction; SwitchToMode "badmode"; }
+    }
+}
+
+themes {
+    bad {
+        fg "#fff"
+        bg "#ff00"
+        unknown_color "#000000"
+    }
+}
