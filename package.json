@@ -3,7 +3,7 @@
   "displayName": "Zellij Toolkit",
   "description": "Complete Zellij development toolkit: IntelliSense, validation, color preview, and snippets for config and layout files",
   "version": "0.1.4",
-  "publisher": "andreahlert",
+  "publisher": "atoolz",
   "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"

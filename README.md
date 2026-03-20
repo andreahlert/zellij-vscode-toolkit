@@ -7,11 +7,11 @@
 </p>
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=andreahlert.zellij-vscode-toolkit">
-    <img src="https://img.shields.io/visual-studio-marketplace/v/andreahlert.zellij-vscode-toolkit?style=flat-square&label=VS%20Marketplace&color=ab47bc" alt="Version">
+  <a href="https://marketplace.visualstudio.com/items?itemName=atoolz.zellij-vscode-toolkit">
+    <img src="https://img.shields.io/visual-studio-marketplace/v/atoolz.zellij-vscode-toolkit?style=flat-square&label=VS%20Marketplace&color=ab47bc" alt="Version">
   </a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=andreahlert.zellij-vscode-toolkit">
-    <img src="https://img.shields.io/visual-studio-marketplace/i/andreahlert.zellij-vscode-toolkit?style=flat-square&label=Installs&color=ab47bc" alt="Installs">
+  <a href="https://marketplace.visualstudio.com/items?itemName=atoolz.zellij-vscode-toolkit">
+    <img src="https://img.shields.io/visual-studio-marketplace/i/atoolz.zellij-vscode-toolkit?style=flat-square&label=Installs&color=ab47bc" alt="Installs">
   </a>
   <a href="https://github.com/atoolz/zellij-vscode-toolkit/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/atoolz/zellij-vscode-toolkit?style=flat-square&color=ab47bc" alt="License">
@@ -108,7 +108,7 @@
 **Command Line:**
 
 ```bash
-code --install-extension andreahlert.zellij-vscode-toolkit
+code --install-extension atoolz.zellij-vscode-toolkit
 ```
 
 <br>
