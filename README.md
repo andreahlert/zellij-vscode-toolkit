@@ -13,8 +13,8 @@
   <a href="https://marketplace.visualstudio.com/items?itemName=andreahlert.zellij-vscode-toolkit">
     <img src="https://img.shields.io/visual-studio-marketplace/i/andreahlert.zellij-vscode-toolkit?style=flat-square&label=Installs&color=ab47bc" alt="Installs">
   </a>
-  <a href="https://github.com/andreahlert/zellij-vscode-toolkit/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/andreahlert/zellij-vscode-toolkit?style=flat-square&color=ab47bc" alt="License">
+  <a href="https://github.com/atoolz/zellij-vscode-toolkit/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/atoolz/zellij-vscode-toolkit?style=flat-square&color=ab47bc" alt="License">
   </a>
   <img src="https://img.shields.io/badge/Zellij-0.41+-ab47bc?style=flat-square" alt="Zellij">
   <img src="https://img.shields.io/badge/KDL-v1-ab47bc?style=flat-square" alt="KDL v1">
@@ -147,7 +147,7 @@ Zellij has **30K+ GitHub stars** and growing fast, but its KDL config format has
 ## Contributing
 
 ```bash
-git clone https://github.com/andreahlert/zellij-vscode-toolkit.git
+git clone https://github.com/atoolz/zellij-vscode-toolkit.git
 cd zellij-config-vscode
 npm install
 npm run build
