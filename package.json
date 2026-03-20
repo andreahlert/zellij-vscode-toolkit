@@ -1,9 +1,9 @@
 {
-  "name": "zellij-config",
-  "displayName": "Zellij Config",
-  "description": "IntelliSense, validation, and documentation for Zellij configuration and layout files",
-  "version": "0.1.0",
-  "publisher": "ahlert",
+  "name": "zellij-vscode-toolkit",
+  "displayName": "Zellij Toolkit",
+  "description": "Complete Zellij development toolkit: IntelliSense, validation, color preview, and snippets for config and layout files",
+  "version": "0.1.1",
+  "publisher": "andreahlert",
   "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
