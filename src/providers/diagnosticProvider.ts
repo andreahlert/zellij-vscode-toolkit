@@ -5,7 +5,7 @@ import { modeNames } from '../data/modes';
 import { isLayoutFile } from '../utils/configDetector';
 import { layoutElements } from '../data/layoutElements';
 import { removeStrings } from '../utils/kdlParser';
-import { outputChannel } from '../extension';
+import { logError } from '../extension';
 
 const ALL_OPTION_NAMES = new Set(configOptions.map(o => o.name));
 const ALL_UI_OPTION_NAMES = new Set(uiOptions.map(o => o.name));
@@ -57,8 +57,7 @@ export class ZellijDiagnosticProvider {
         try {
             this.doValidate(document);
         } catch (err) {
-            outputChannel?.appendLine(`Diagnostic error: ${err}`);
-            this.diagnosticCollection.delete(document.uri);
+            logError('Diagnostic error', err);
         }
     }
 
@@ -79,19 +78,22 @@ export class ZellijDiagnosticProvider {
             const line = document.lineAt(i);
             const trimmed = line.text.trim();
 
-            // Track multi-line block comments
+            if (!trimmed) continue;
+
+            // Track multi-line block comments (strip strings first to avoid false matches)
+            const commentCheck = removeStrings(trimmed);
             if (inBlockComment) {
-                if (trimmed.includes('*/')) {
+                if (commentCheck.includes('*/')) {
                     inBlockComment = false;
                 }
                 continue;
             }
-
-            // Skip comments and empty lines
-            if (!trimmed) continue;
-            if (trimmed.startsWith('//')) continue;
-            if (trimmed.startsWith('/*')) {
-                if (!trimmed.includes('*/')) {
+            if (commentCheck.includes('//') && commentCheck.indexOf('//') < commentCheck.indexOf('{')) {
+                continue;
+            }
+            if (commentCheck.startsWith('//')) continue;
+            if (commentCheck.includes('/*')) {
+                if (!commentCheck.includes('*/')) {
                     inBlockComment = true;
                 }
                 continue;
@@ -301,12 +303,24 @@ export class ZellijDiagnosticProvider {
     }
 
     private validateActions(line: vscode.TextLine, diagnostics: vscode.Diagnostic[]): void {
-        const text = removeStrings(line.text);
-        // Match PascalCase words that look like action names (after stripping strings)
+        const text = line.text;
+        // Build a set of character indices that are inside strings
+        const inString = new Set<number>();
+        const strPattern = /"(?:[^"\\]|\\.)*"/g;
+        let strMatch;
+        while ((strMatch = strPattern.exec(text)) !== null) {
+            for (let k = strMatch.index; k < strMatch.index + strMatch[0].length; k++) {
+                inString.add(k);
+            }
+        }
+
+        // Match PascalCase words that look like action names (skip those inside strings)
         const actionPattern = /\b([A-Z][a-zA-Z]+)\b/g;
         let match;
 
         while ((match = actionPattern.exec(text)) !== null) {
+            if (inString.has(match.index)) continue;
+
             const name = match[1];
             // Skip common non-action PascalCase words
             if (['Left', 'Right', 'Up', 'Down', 'Ctrl', 'Alt', 'Shift', 'Enter', 'Esc', 'Tab',

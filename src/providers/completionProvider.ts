@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { getKdlContext } from '../utils/kdlParser';
-import { outputChannel } from '../extension';
+import { logError } from '../extension';
 import { configOptions, uiOptions, topLevelBlocks, themeColors } from '../data/options';
 import { actions } from '../data/actions';
 import { keybindBlocks, modeNames } from '../data/modes';
@@ -18,7 +18,7 @@ export class ZellijCompletionProvider implements vscode.CompletionItemProvider {
         try {
             return this.doProvideCompletionItems(document, position);
         } catch (err) {
-            outputChannel?.appendLine(`Completion error: ${err}`);
+            logError('Completion error', err);
             return undefined;
         }
     }

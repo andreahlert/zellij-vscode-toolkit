@@ -9,6 +9,15 @@ const LANGUAGE_ID = 'zellij-kdl';
 
 export let outputChannel: vscode.OutputChannel;
 
+export function logError(prefix: string, err: unknown): void {
+    const message = err instanceof Error ? err.stack ?? err.message : String(err);
+    if (outputChannel) {
+        outputChannel.appendLine(`${prefix}: ${message}`);
+    } else {
+        console.error(`${prefix}: ${message}`);
+    }
+}
+
 export function activate(context: vscode.ExtensionContext) {
     outputChannel = vscode.window.createOutputChannel('Zellij Config');
     context.subscriptions.push(outputChannel);

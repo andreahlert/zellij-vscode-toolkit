@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { removeStrings } from '../utils/kdlParser';
-import { outputChannel } from '../extension';
+import { logError } from '../extension';
 
 export class ZellijColorProvider implements vscode.DocumentColorProvider {
     provideDocumentColors(
@@ -10,7 +10,7 @@ export class ZellijColorProvider implements vscode.DocumentColorProvider {
         try {
             return this.doProvideDocumentColors(document);
         } catch (err) {
-            outputChannel?.appendLine(`Color provider error: ${err}`);
+            logError('Color provider error', err);
             return [];
         }
     }
@@ -33,18 +33,17 @@ export class ZellijColorProvider implements vscode.DocumentColorProvider {
             const line = document.lineAt(i);
             const trimmed = line.text.trim();
 
-            // Track multi-line block comments
+            // Track multi-line block comments (strip strings to avoid false matches)
+            const commentCheck = removeStrings(trimmed);
             if (inBlockComment) {
-                if (trimmed.includes('*/')) {
+                if (commentCheck.includes('*/')) {
                     inBlockComment = false;
                 }
                 continue;
             }
-
-            // Skip comments
-            if (trimmed.startsWith('//')) continue;
-            if (trimmed.startsWith('/*')) {
-                if (!trimmed.includes('*/')) {
+            if (commentCheck.startsWith('//')) continue;
+            if (commentCheck.includes('/*')) {
+                if (!commentCheck.includes('*/')) {
                     inBlockComment = true;
                 }
                 continue;
@@ -91,10 +90,15 @@ export class ZellijColorProvider implements vscode.DocumentColorProvider {
         context: { document: vscode.TextDocument; range: vscode.Range },
         _token: vscode.CancellationToken
     ): vscode.ColorPresentation[] {
-        const hex = this.colorToHex(color);
-        const presentation = new vscode.ColorPresentation(hex);
-        presentation.textEdit = new vscode.TextEdit(context.range, hex);
-        return [presentation];
+        try {
+            const hex = this.colorToHex(color);
+            const presentation = new vscode.ColorPresentation(hex);
+            presentation.textEdit = new vscode.TextEdit(context.range, hex);
+            return [presentation];
+        } catch (err) {
+            logError('Color presentation error', err);
+            return [];
+        }
     }
 
     private hexToColor(hex: string): vscode.Color | null {

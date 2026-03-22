@@ -151,7 +151,12 @@ function trySetZellijLanguage(document: vscode.TextDocument): void {
     if (isZellijFile(document)) {
         vscode.languages.setTextDocumentLanguage(document, 'zellij-kdl').then(
             undefined,
-            () => { /* document may have been closed before language could be set */ }
+            (err) => {
+                const msg = err instanceof Error ? err.message : String(err);
+                if (!msg.includes('disposed') && !msg.includes('closed')) {
+                    console.warn(`Zellij Config: failed to set language for ${document.fileName}: ${msg}`);
+                }
+            }
         );
     }
 }
@@ -161,6 +166,7 @@ function trySetZellijLanguage(document: vscode.TextDocument): void {
  * Checks for a `layout` block at any indentation level.
  */
 export function isLayoutFile(document: vscode.TextDocument): boolean {
-    const text = document.getText();
+    const maxLines = Math.min(100, document.lineCount);
+    const text = document.getText(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(maxLines, 0)));
     return /^\s*layout\s*\{/m.test(text);
 }

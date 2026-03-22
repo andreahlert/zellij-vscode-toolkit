@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { getWordAtPosition, getKdlContext } from '../utils/kdlParser';
-import { outputChannel } from '../extension';
+import { logError } from '../extension';
 import { configOptions, uiOptions, topLevelBlocks, themeColors } from '../data/options';
 import { actions } from '../data/actions';
 import { modes, keybindBlocks } from '../data/modes';
@@ -16,7 +16,7 @@ export class ZellijHoverProvider implements vscode.HoverProvider {
         try {
             return this.doProvideHover(document, position);
         } catch (err) {
-            outputChannel?.appendLine(`Hover error: ${err}`);
+            logError('Hover error', err);
             return undefined;
         }
     }
